@@ -1,6 +1,6 @@
-from .config import cfg
-from .sql.sql_tool import ExtendedSQLDatabaseToolkit
-from .sql_db_factory import sql_db_factory
+from config import cfg
+from sql.sql_tool import ExtendedSQLDatabaseToolkit
+from sql_db_factory import sql_db_factory
 
 FINAL_ANSWER_ACTION = "Final Answer:"
 
@@ -132,5 +132,33 @@ if __name__ == "__main__":
     os.environ["LANGCHAIN_PROJECT"]="kbasellms"
 
     agent_executor = agent_factory()
-    result = agent_executor.run("are there tables in the database?")
-    print("result",result)
+    # result = agent_executor.run("Describe all tables") 
+    
+                #     result: The tables "blacklist" and "lotterygains" have the following columns:
+
+                # * blacklist:
+                #         + id
+                #         + nom
+                # * lotterygains:
+                #         + id
+                #         + nom
+                #         + gain
+
+                # These are the relevant tables for querying, as per the schema.
+                
+    # result = agent_executor.run("Fetch the names from the lotterygains table.")
+    # result: The names from the lotterygains table are ABDERRAHIM, Anonymous, BLACKLISTED.
+    
+    
+    # result = agent_executor.run("What is the total sum of gains from the lotterygains table?")
+    #result: $87.93
+    
+    
+    # result = agent_executor.run("What is the average gain from the lotterygains table?")
+    # result: The average gain from the lotterygains table is $4.89.
+    
+    # result = agent_executor.run("Get the total gains for all people who are not in the blacklist table.")
+    # result: The total gains for all people who are not in the blacklist table is $87.93
+    
+    result = agent_executor.run("Describe all tables")
+    print("result:",result)

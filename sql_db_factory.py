@@ -1,4 +1,4 @@
-from sql_analyzer.config import cfg
+from config import cfg
 from langchain.sql_database import SQLDatabase
 
 def sql_db_factory() -> SQLDatabase:
